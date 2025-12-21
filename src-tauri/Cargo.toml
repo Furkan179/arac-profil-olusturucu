@@ -1,0 +1,29 @@
+[package]
+name = "app"
+version = "0.1.0"
+description = "A Tauri App"
+authors = ["you"]
+license = ""
+repository = ""
+default-run = "app"
+edition = "2021"
+rust-version = "1.70"
+
+[build-dependencies]
+# JS'deki @tauri-apps/cli (v2.9.2) ile eşleşmesi için build'i güncelledik
+# DÜZELTME: tauri-build'in son sürümü 2.5.1'miş.
+tauri-build = { version = "2.5.1", features = [] }
+
+[dependencies]
+# --- VERSİYONLAR GÜNCELLENDİ ---
+# Artık hepsi JS paketlerinle aynı sürüm serisinde
+tauri = { version = "2.9.2", features = [] }
+tauri-plugin-dialog = "2.4.2"
+tauri-plugin-fs = "2.4.4"
+# ------------------------------
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
